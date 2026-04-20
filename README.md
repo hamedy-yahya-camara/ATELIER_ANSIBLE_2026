@@ -154,3 +154,34 @@ Cet atelier ANSIBLE, **noté sur 20 points**, est évalué sur la base du barèm
 - Questions + Qualité du Readme (lisibilité, erreur, ...) (5 points)
 - Atelier - Rôles DEV et PROD (6 points)
 - Processus travail (quantité de commits, cohérence globale, interventions externes, ...) (3 points) 
+
+## Séquence 4 : Questions
+
+**Question 1 : Pourquoi Ansible est-il qualifié d'outil "déclaratif" ?**
+
+Ansible est qualifié de déclaratif car on décrit l'état final souhaité du système (exemple : "nginx doit être installé et démarré") et non les étapes pour y arriver. Ansible se charge de déterminer lui-même les actions nécessaires pour atteindre cet état cible.
+
+**Question 2 : Pourquoi l'utilisation de variables est-elle essentielle dans un playbook ?**
+
+Les variables permettent de rendre un playbook réutilisable et adaptable. Au lieu de coder en dur des valeurs comme un nom d'auteur ou un titre de page, on utilise des variables qui peuvent être modifiées facilement sans toucher au code principal. Cela facilite la maintenance et le déploiement sur plusieurs environnements.
+
+**Question 3 : En quoi Ansible facilite-t-il la gestion de plusieurs serveurs ?**
+
+Ansible permet de gérer plusieurs serveurs simultanément grâce à son fichier d'inventaire (inventory.ini). On peut regrouper les serveurs par catégories (DEV, PROD) et exécuter un seul playbook sur tous ces serveurs en même temps, ce qui évite de se connecter manuellement à chaque machine.
+
+**Question 4 : Quels sont les avantages et les limites d'Ansible dans un contexte DevOps ?**
+
+Avantages :
+- Sans agent : pas besoin d'installer de logiciel sur les serveurs cibles
+- Simple à lire et écrire (format YAML)
+- Idempotent : on peut relancer plusieurs fois sans effets indésirables
+- Grande communauté et nombreux modules disponibles
+
+Limites :
+- Moins adapté pour des déploiements très complexes
+- Performances réduites sur un très grand nombre de serveurs
+- Pas de gestion native d'état comme Terraform
+
+**Question 5 : Quelle est la différence entre les modules copy et template dans Ansible ?**
+
+Le module `copy` copie un fichier tel quel sur le serveur cible, sans modification. Le module `template` copie un fichier en remplaçant les variables Jinja2 ({{ variable }}) par leurs valeurs réelles. On utilise `template` quand on veut personnaliser dynamiquement le contenu d'un fichier selon les variables définies dans le playbook.
